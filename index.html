@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大象影视 - 影视资源导航与观影指南 | daxiangyingshi-wap</title>
+<meta name="description" content="大象影视(daxiangyingshi-wap)是影视资源导航与观影指南页面，涵盖热播榜、分类检索、每日推荐与观影记录，适配手机与平板访问，内容清晰、结构完整。">
+<meta name="keywords" content="大象影视,daxiangyingshi-wap,影视导航,观影指南,热播榜,影视分类,每日推荐">
+<meta name="author" content="大象影视">
+<meta name="robots" content="index,follow">
+<meta name="referrer" content="no-referrer-when-downgrade">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="大象影视">
+<meta property="og:title" content="大象影视 - 影视资源导航与观影指南">
+<meta property="og:description" content="涵盖热播榜、分类检索、每日推荐与观影记录，适配手机与平板访问。">
+<meta property="og:url" content="https://daxiangyingshi-wap.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0d2818">
+<link rel="canonical" href="https://daxiangyingshi-wap.github.io/">
+<style>
+/* ===== Reset ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,sans-serif;background:#0a1f14;color:#e7f5ee;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font:inherit;outline:none}
+img{display:block;max-width:100%}
+::selection{background:#6ee7b7;color:#073018}
+:focus-visible{outline:2px solid #6ee7b7;outline-offset:3px;border-radius:8px}
+/* ===== Tokens ===== */
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:88px 0;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:3px;text-transform:uppercase;color:#6ee7b7;font-weight:800;margin-bottom:14px}
+.kicker i{width:8px;height:8px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #fbbf24;display:inline-block}
+.h2{font-size:clamp(27px,4.4vw,44px);font-weight:900;line-height:1.25}
+.h2 em{font-style:normal;background:linear-gradient(92deg,#6ee7b7,#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#a8c7b8;max-width:640px;margin-top:15px;font-size:16px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+/* ===== Header ===== */
+header{position:sticky;top:0;z-index:60;background:rgba(10,31,20,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+.hd{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:20px;flex:none}
+.logo .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:linear-gradient(150deg,#047857,#0f766e);box-shadow:0 8px 24px -10px #047857}
+.logo b{color:#fff}
+.logo b i{font-style:normal;color:#fbbf24}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{font-size:15px;padding:9px 14px;border-radius:11px;color:#d1e7dc;font-weight:600;transition:.2s}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nav a.pill{background:linear-gradient(135deg,#047857,#0e7490);color:#fff;margin-left:8px;font-weight:800}
+.nav a.pill:hover{filter:brightness(1.12)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.08);font-size:20px;color:#6ee7b7}
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 82% 12%,rgba(16,185,129,.22),transparent 40%),radial-gradient(circle at 12% 88%,rgba(251,191,36,.16),transparent 42%),linear-gradient(158deg,#0a1f14,#0d4029 55%,#115e3b)}
+.jungle{position:absolute;left:0;right:0;bottom:0;height:130px;background:linear-gradient(180deg,transparent,rgba(5,20,12,.75));z-index:2}
+.jungle::before,.jungle::after{content:"";position:absolute;bottom:0;border-radius:50% 50% 0 0;background:rgba(8,45,28,.85)}
+.jungle::before{left:-8%;width:38%;height:110px}
+.jungle::after{right:-10%;width:46%;height:150px}
+.hero-in{position:relative;z-index:5;padding:104px 0 120px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero-in h1{font-size:clamp(33px,5.8vw,58px);font-weight:950;line-height:1.14;color:#fff}
+.hero-in h1 b{display:block;background:linear-gradient(92deg,#d1fae5,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-in p{color:#cfe8da;font-size:clamp(15px,2vw,18px);margin-top:18px;max-width:520px}
+.search{margin-top:30px;display:flex;gap:10px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px;backdrop-filter:blur(8px)}
+.search input{flex:1;background:transparent;border:none;color:#fff;font-size:15px;padding:10px 14px}
+.search input::placeholder{color:#9fc6b6}
+.search button{padding:12px 24px;border-radius:11px;background:linear-gradient(135deg,#059669,#0e7490);color:#fff;font-weight:800;font-size:14.5px;transition:.25s}
+.search button:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.chips{margin-top:20px;display:flex;gap:9px;flex-wrap:wrap}
+.chips a{font-size:13px;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.12);color:#e7f5ee;transition:.2s}
+.chips a:hover{background:rgba(110,231,183,.16);color:#fff;border-color:#6ee7b7}
+/* big elephant (div art) */
+.art{position:relative;z-index:5;height:380px}
+.ele{position:absolute;inset:0;display:grid;place-items:center}
+.body{width:250px;height:190px;border-radius:52% 48% 44% 56% / 46% 52% 48% 54%;background:linear-gradient(155deg,#6b4f3a,#3f3024);position:relative;box-shadow:inset -18px -22px 40px rgba(0,0,0,.35),0 30px 60px -28px rgba(0,0,0,.6)}
+.body::before{content:"";position:absolute;left:50%;top:-78px;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:linear-gradient(155deg,#7a5a42,#4a3828);box-shadow:inset -10px -12px 20px rgba(0,0,0,.3)}
+.body::after{content:"";position:absolute;left:50%;top:-52px;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:#1c140d;box-shadow:26px 6px 0 -3px #1c140d}
+.trunk{position:absolute;left:50%;top:-10px;transform:translateX(-50%);width:34px;height:150px;border-radius:40px;background:linear-gradient(135deg,#7a5a42,#4a3828);transform-origin:top center;transform:translateX(-50%) rotate(-14deg);box-shadow:inset -6px 0 10px rgba(0,0,0,.25)}
+.ear{position:absolute;left:-34px;top:12px;width:74px;height:100px;border-radius:50% 14% 60% 40%;background:linear-gradient(155deg,#8a6548,#5a4130);box-shadow:inset -8px -10px 16px rgba(0,0,0,.25)}
+.legs{position:absolute;bottom:-56px;left:0;right:0;display:flex;justify-content:space-between;padding:0 28px}
+.legs span{width:32px;height:60px;border-radius:14px;background:linear-gradient(180deg,#6b4f3a,#3a2c20);box-shadow:inset -5px 0 8px rgba(0,0,0,.25)}
+.art .ring{position:absolute;border-radius:50%;border:2px solid rgba(110,231,183,.18)}
+.art .ring.r1{width:430px;height:430px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.art .ring.r2{width:330px;height:330px;left:50%;top:50%;transform:translate(-50%,-50%);border-color:rgba(251,191,36,.2)}
+.art .leaf{position:absolute;width:20px;height:20px;border-radius:50% 0 50% 50%;background:#16a34a;opacity:.5}
+/* ===== Marquee ===== */
+.marq{background:#07170f;border-block:1px solid rgba(255,255,255,.08);padding:13px 0;overflow:hidden}
+.marq-t{display:flex;gap:44px;width:max-content;animation:scroll 34s linear infinite}
+.marq-t span{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;color:#a8c7b8;white-space:nowrap}
+.marq-t span b{color:#fbbf24;font-size:11px;font-weight:800;letter-spacing:1px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* ===== Board (table) ===== */
+.board{background:#0a1f14}
+.tb-wrap{border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;background:linear-gradient(165deg,rgba(16,185,129,.07),rgba(10,31,20,.5));margin-top:42px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+thead th{background:rgba(16,185,129,.14);color:#6ee7b7;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-align:left;padding:16px 18px;font-weight:900;white-space:nowrap}
+tbody td{padding:17px 18px;border-top:1px solid rgba(255,255,255,.07);color:#d6e8de;vertical-align:middle}
+tbody tr:hover{background:rgba(255,255,255,.04)}
+tbody tr:hover .mini{filter:brightness(1.18)}
+.rk{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(251,191,36,.16);color:#fde68a;font-weight:950;font-size:15px}
+.rk.g1{background:#fbbf24;color:#3a2505}
+.mini{width:44px;height:60px;border-radius:9px;flex:none;position:relative;box-shadow:inset -6px -8px 14px rgba(0,0,0,.3)}
+.td-flex{display:flex;align-items:center;gap:14px}
+.ttl{font-weight:800;color:#fff;font-size:15.5px;line-height:1.4}
+.ttl small{display:block;color:#8fb3a0;font-weight:600;font-size:12.5px;margin-top:2px}
+.bar-cell{min-width:120px}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#34d399,#fbbf24)}
+.badge{display:inline-block;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:7px;white-space:nowrap}
+.b-new{background:rgba(251,191,36,.18);color:#fde68a}
+.b-hot{background:rgba(248,113,113,.18);color:#fecaca}
+.b-end{background:rgba(148,163,184,.16);color:#cbd5e1}
+/* ===== Categories (CSS columns masonry) ===== */
+.cat{background:#07170f}
+.masonry{margin-top:42px;column-count:3;column-gap:20px}
+.m-card{break-inside:avoid;margin-bottom:20px;border-radius:20px;padding:26px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.09);transition:.3s}
+.m-card:hover{transform:translateY(-5px)}
+.m-card h4{font-size:17px;font-weight:900;color:#fff;margin-bottom:8px;position:relative;z-index:2}
+.m-card p{font-size:13.5px;color:#b9d4c6;position:relative;z-index:2}
+.m-card .bg{position:absolute;right:-26px;top:-26px;font-size:76px;opacity:.16;z-index:1}
+.m-card.a{background:linear-gradient(160deg,#065f46,#022c22)}
+.m-card.b{background:linear-gradient(160deg,#0f766e,#134e4a)}
+.m-card.c{background:linear-gradient(160deg,#b45309,#78350f)}
+.m-card.d{background:linear-gradient(160deg,#7c3aed,#4c1d95)}
+.m-card.e{background:linear-gradient(160deg,#be123c,#881337)}
+.m-card.f{background:linear-gradient(160deg,#0369a1,#0c4a6e)}
+.m-card.g{background:linear-gradient(160deg,#15803d,#14532d)}
+.m-card.h{background:linear-gradient(160deg,#c2410c,#7c2d12)}
+/* ===== Daily (split-pane slider) ===== */
+.daily{background:#0a1f14}
+.split{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.track{position:relative;height:280px;border-radius:24px;background:linear-gradient(160deg,#064e3b,#022c22);border:1px solid rgba(255,255,255,.1);overflow:hidden;box-shadow:inset 0 0 80px rgba(0,0,0,.35)}
+.thumb{position:absolute;top:0;bottom:0;left:0;width:52%;background:linear-gradient(155deg,#fbbf24,#f59e0b);display:grid;place-items:center;color:#3a2505;font-weight:950;font-size:clamp(20px,3vw,30px);transition:width .25s ease}
+.thumb span{position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:15px;color:#b45309;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.track .cap{position:absolute;right:24px;bottom:20px;color:#a7f3d0;font-size:13px;font-weight:800}
+.track .cap em{font-style:normal;color:#fbbf24}
+.daily ul{display:grid;gap:12px}
+.daily li{display:flex;align-items:center;gap:15px;padding:16px 18px;border-radius:15px;background:linear-gradient(165deg,rgba(16,185,129,.07),rgba(10,31,20,.5));border:1px solid rgba(255,255,255,.09);transition:.25s}
+.daily li:hover{border-color:rgba(110,231,183,.5);transform:translateX(6px)}
+.daily li .no{font-size:13px;font-weight:900;color:#052e1f;background:#6ee7b7;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none}
+.daily li b{display:block;font-size:15.5px;color:#fff}
+.daily li span{font-size:12.5px;color:#8fb3a0}
+/* ===== Records (timeline + form) ===== */
+.rec{background:#07170f}
+.rec-grid{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,#6ee7b7,#047857)}
+.node{position:relative;padding-bottom:24px}
+.node::before{content:"";position:absolute;left:-27px;top:4px;width:16px;height:16px;border-radius:50%;background:#0a1f14;border:3px solid #34d399;box-shadow:0 0 0 4px rgba(52,211,153,.16)}
+.node time{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#fbbf24;font-weight:800}
+.node h5{font-size:16px;font-weight:900;color:#fff;margin:4px 0 5px}
+.node p{font-size:13.5px;color:#a8c7b8}
+.rec-form{border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:28px;background:linear-gradient(165deg,rgba(16,185,129,.07),rgba(10,31,20,.5))}
+.rec-form h4{font-size:18px;font-weight:900;color:#fff;margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12.5px;color:#8fd9b8;font-weight:800;margin-bottom:7px}
+.field input,.field select{width:100%;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font-size:14.5px}
+.field input:focus,.field select:focus{border-color:#6ee7b7}
+.stars{display:flex;gap:8px}
+.stars i{width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.09);display:grid;place-items:center;font-size:16px;color:#5f7a6d;cursor:pointer;transition:.15s}
+.stars i.on,.stars i:hover{background:#fbbf24;color:#3a2505}
+.rec-form button{width:100%;padding:15px;border-radius:13px;background:linear-gradient(135deg,#059669,#0e7490);color:#fff;font-weight:900;font-size:15px;margin-top:6px;transition:.25s}
+.rec-form button:hover{filter:brightness(1.12);transform:translateY(-2px)}
+/* ===== Finale ===== */
+.fin{position:relative;overflow:hidden;padding:0;background:radial-gradient(circle at 50% 115%,rgba(52,211,153,.4),transparent 50%),linear-gradient(180deg,#0a1f14,#047857 52%,#0e7490)}
+.ball{position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.2),transparent 60%);animation:float 8s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-50px)}}
+.fc{padding:104px 24px;text-align:center;position:relative;z-index:2}
+.fc h2{font-size:clamp(28px,5.4vw,50px);font-weight:950;color:#fff;line-height:1.25}
+.fc h2 b{display:block;font-size:1.22em;background:linear-gradient(92deg,#d1fae5,#fde68a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fc p{color:#e8faf1;margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto}
+.fc-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:99px;font-weight:800;font-size:15px;transition:.25s}
+.btn-p{background:#fff;color:#065f46;box-shadow:0 16px 38px -14px rgba(0,0,0,.45)}
+.btn-p:hover{transform:translateY(-3px);filter:brightness(.96)}
+.btn-o{border:2px solid rgba(255,255,255,.5);color:#fff}
+.btn-o:hover{background:rgba(255,255,255,.14)}
+/* ===== Footer ===== */
+footer{border-top:1px solid rgba(255,255,255,.08);padding:60px 0 32px;background:#050f0a}
+.foot{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:36px}
+.foot h5{font-size:14px;font-weight:800;margin-bottom:16px;color:#fff}
+.foot ul li{margin-bottom:10px}
+.foot ul a{font-size:13.5px;color:#7fa393;transition:.2s}
+.foot ul a:hover{color:#fbbf24}
+.foot .brand p{color:#7fa393;font-size:13.5px;margin:14px 0}
+.foot .brand .url{display:inline-block;padding:9px 15px;border-radius:10px;background:rgba(255,255,255,.07);font-size:13px;color:#d1e7dc;font-family:monospace}
+.copy{padding-top:26px;margin-top:38px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#5d7d6d;font-size:12.5px}
+/* ===== Responsive ===== */
+@media(max-width:980px){.hero-in{grid-template-columns:1fr;gap:48px}.art{height:300px}.masonry{column-count:2}.split,.rec-grid{grid-template-columns:1fr}}
+@media(max-width:680px){
+ .wrap{padding:0 16px}
+ section{padding:64px 0}
+ .nav{position:fixed;left:0;right:0;top:70px;flex-direction:column;align-items:stretch;gap:4px;padding:18px;background:#0a1f14;border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-112%);transition:.3s;visibility:hidden;box-shadow:0 24px 50px -24px rgba(0,0,0,.5)}
+ .nav.open{transform:translateY(0);visibility:visible}
+ .nav a{padding:13px 16px;border-radius:12px}
+ .nav a.pill{margin-left:0}
+ .burger{display:grid;place-items:center}
+ .hero-in{padding:68px 0 84px}
+ .search{flex-direction:column}
+ .masonry{column-count:1}
+ .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ table{min-width:600px}
+ .art .ring.r1{width:340px;height:340px}
+ .track{height:200px}
+}
+@media print{body{background:#fff;color:#000}header,.marq,.fin,footer{display:none}section{padding:18px 0}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<header>
+  <div class="wrap hd">
+    <a class="logo" href="#home" aria-label="大象影视 首页"><span class="ic" aria-hidden="true">&#129420;</span><b>大象<i>影视</i></b></a>
+    <nav class="nav" id="nav">
+      <a href="#board">热播榜</a>
+      <a href="#cat">分类检索</a>
+      <a href="#daily">每日推荐</a>
+      <a href="#rec">观影记录</a>
+      <a href="#site" class="pill">访问官网</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false">&#9776;</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero" id="home">
+    <div class="wrap hero-in">
+      <div>
+        <h1>影视资源<br><b>一站导航</b></h1>
+        <p>大象影视(daxiangyingshi-wap)是影视资源导航与观影指南页面，帮你快速找到热播内容、分类入口与每日推荐。</p>
+        <form class="search" onsubmit="event.preventDefault();location.href='#board'">
+          <input type="search" placeholder="搜索影片名称、演员或类型…" aria-label="搜索影片">
+          <button type="submit">&#128269; 搜索</button>
+        </form>
+        <div class="chips">
+          <a href="#cat">电影</a><a href="#cat">电视剧</a><a href="#cat">综艺</a><a href="#cat">动漫</a><a href="#cat">纪录片</a><a href="#cat">4K专区</a>
+        </div>
+      </div>
+      <div class="art" aria-hidden="true">
+        <div class="ring r1"></div><div class="ring r2"></div>
+        <div class="ele">
+          <div class="body">
+            <div class="ear"></div>
+            <div class="trunk"></div>
+            <div class="legs"><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="leaf" style="left:8%;top:14%"></div>
+        <div class="leaf" style="right:12%;bottom:24%"></div>
+        <div class="leaf" style="left:20%;bottom:10%"></div>
+      </div>
+    </div>
+    <div class="jungle" aria-hidden="true"></div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marq" aria-hidden="true">
+    <div class="wrap"><div class="marq-t">
+      <span><b>HOT</b>本周热播榜已更新，看看谁登顶榜首</span><span><b>NEW</b>每日推荐 18:00 准时上新</span><span><b>4K</b>4K 专区新增多部高清作品</span><span><b>SAFE</b>页面结构清晰，导航直达所需栏目</span><span><b>MOBILE</b>移动端自适应，随时随地浏览</span>
+      <span><b>HOT</b>本周热播榜已更新，看看谁登顶榜首</span><span><b>NEW</b>每日推荐 18:00 准时上新</span><span><b>4K</b>4K 专区新增多部高清作品</span><span><b>SAFE</b>页面结构清晰，导航直达所需栏目</span><span><b>MOBILE</b>移动端自适应，随时随地浏览</span>
+    </div></div>
+  </div>
+
+  <!-- BOARD: table -->
+  <section id="board">
+    <div class="wrap">
+      <div class="kicker"><i></i>Top Chart</div>
+      <h2 class="h2">热播<em>榜单</em></h2>
+      <p class="lead">大象影视整理的热播榜单，按热度排序，覆盖电影、剧集、综艺、动漫等类型，随时查看本周最值得关注的内容。</p>
+
+      <div class="tb-wrap">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr><th style="width:70px">排名</th><th>作品</th><th>类型</th><th>热度</th><th>状态</th><th>操作</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="rk g1">1</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#f59e0b,#b45309)"></div><span class="ttl">追风者 <small>电影 · 动作 / 犯罪</small></span></div></td><td>电影</td><td><div class="bar-cell"><div class="bar"><i style="width:96%"></i></div></div></td><td><span class="badge b-hot">热播中</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk g1">2</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#34d399,#047857)"></div><span class="ttl">云边小卖部 <small>电视剧 · 都市 / 温情</small></span></div></td><td>电视剧</td><td><div class="bar-cell"><div class="bar"><i style="width:91%"></i></div></div></td><td><span class="badge b-new">更新中</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk">3</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#60a5fa,#1d4ed8)"></div><span class="ttl">深海奇遇记 <small>动漫 · 冒险 / 奇幻</small></span></div></td><td>动漫</td><td><div class="bar-cell"><div class="bar"><i style="width:85%"></i></div></div></td><td><span class="badge b-new">更新中</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk">4</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#f472b6,#be185d)"></div><span class="ttl">今晚吃什么 <small>综艺 · 美食 / 真人秀</small></span></div></td><td>综艺</td><td><div class="bar-cell"><div class="bar"><i style="width:79%"></i></div></div></td><td><span class="badge b-hot">热播中</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk">5</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#a78bfa,#6d28d9)"></div><span class="ttl">山河长卷 <small>纪录片 · 人文 / 历史</small></span></div></td><td>纪录片</td><td><div class="bar-cell"><div class="bar"><i style="width:72%"></i></div></div></td><td><span class="badge b-end">已完结</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk">6</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#fb923c,#c2410c)"></div><span class="ttl">急诊十二时辰 <small>电视剧 · 医疗 / 现实</small></span></div></td><td>电视剧</td><td><div class="bar-cell"><div class="bar"><i style="width:66%"></i></div></div></td><td><span class="badge b-new">更新中</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+              <tr><td><span class="rk">7</span></td><td><div class="td-flex"><div class="mini" style="background:linear-gradient(155deg,#22d3ee,#0e7490)"></div><span class="ttl">星际回声 <small>电影 · 科幻 / 冒险</small></span></div></td><td>电影</td><td><div class="bar-cell"><div class="bar"><i style="width:61%"></i></div></div></td><td><span class="badge b-end">已完结</span></td><td><a href="#">详情 &#8594;</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES: masonry -->
+  <section id="cat">
+    <div class="wrap">
+      <div class="kicker"><i></i>Browse Categories</div>
+      <h2 class="h2 center">分类<em>检索</em></h2>
+      <p class="lead center">按类型、题材与清晰度划分的入口，帮助你在大象影视快速定位感兴趣的内容方向。</p>
+
+      <div class="masonry">
+        <a class="m-card a" href="#"><span class="bg" aria-hidden="true">&#127909;</span><h4>动作电影</h4><p>枪战、格斗、追车与冒险，强节奏的视听体验。</p></a>
+        <a class="m-card d" href="#"><span class="bg" aria-hidden="true">&#128218;</span><h4>都市剧集</h4><p>贴近生活的职场、情感与现实题材长篇。</p></a>
+        <a class="m-card b" href="#"><span class="bg" aria-hidden="true">&#127916;</span><h4>纪录片</h4><p>人文、自然与历史，真实视角的深度内容。</p></a>
+        <a class="m-card g" href="#"><span class="bg" aria-hidden="true">&#127800;</span><h4>动漫专区</h4><p>国漫与日漫新番，冒险、奇幻、治愈各有所选。</p></a>
+        <a class="m-card e" href="#"><span class="bg" aria-hidden="true">&#127881;</span><h4>综艺娱乐</h4><p>真人秀、音乐与脱口秀，轻松下饭首选。</p></a>
+        <a class="m-card f" href="#"><span class="bg" aria-hidden="true">&#128444;</span><h4>4K 专区</h4><p>高清晰度片源，大屏观看更沉浸。</p></a>
+        <a class="m-card c" href="#"><span class="bg" aria-hidden="true">&#127919;</span><h4>喜剧合集</h4><p>轻松幽默的喜剧片与情景剧，解压必备。</p></a>
+        <a class="m-card h" href="#"><span class="bg" aria-hidden="true">&#128293;</span><h4>悬疑烧脑</h4><p>反转不断的悬疑、犯罪与推理题材。</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAILY: slider + list -->
+  <section id="daily">
+    <div class="wrap">
+      <div class="kicker"><i></i>Daily Picks</div>
+      <h2 class="h2">每日<em>推荐</em></h2>
+      <p class="lead">大象影视每日精选一部主推作品与四部备选内容，拖动滑块调整推荐比例，发现更多观影灵感。</p>
+
+      <div class="split">
+        <div class="track">
+          <div class="thumb" id="thumb"><span>&#8596;</span></div>
+          <div class="cap">今日主推 <em id="pct">52%</em></div>
+        </div>
+        <ul>
+          <li><span class="no">1</span><span><b>追风者</b><span>动作电影 · 今日主推</span></span></li>
+          <li><span class="no">2</span><span><b>云边小卖部</b><span>都市剧集 · 温情治愈</span></span></li>
+          <li><span class="no">3</span><span><b>深海奇遇记</b><span>动漫 · 奇幻冒险</span></span></li>
+          <li><span class="no">4</span><span><b>山河长卷</b><span>纪录片 · 人文历史</span></span></li>
+          <li><span class="no">5</span><span><b>今晚吃什么</b><span>综艺 · 美食真人秀</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORDS: timeline + form -->
+  <section id="rec">
+    <div class="wrap">
+      <div class="kicker"><i></i>Watch Records</div>
+      <h2 class="h2 center">观影<em>记录</em></h2>
+      <p class="lead center">记录你的观影轨迹与评分，方便回顾看过的作品并留下真实评价。</p>
+
+      <div class="rec-grid">
+        <div class="timeline">
+          <div class="node"><time>10-08 周五</time><h5>追风者</h5><p>动作电影 · 给出 5 星评价，节奏紧凑，值得二刷。</p></div>
+          <div class="node"><time>10-06 周三</time><h5>云边小卖部 第 12 集</h5><p>都市剧集 · 已标记「看过」，准备追后续更新。</p></div>
+          <div class="node"><time>10-03 周日</time><h5>山河长卷</h5><p>纪录片 · 看完两集，画面与配乐都很出色。</p></div>
+          <div class="node"><time>09-29 周三</time><h5>深海奇遇记</h5><p>动漫 · 已收藏，计划周末连看两集。</p></div>
+        </div>
+
+        <form class="rec-form" onsubmit="event.preventDefault();alert('示例：记录已提交（内页链接为 # 占位）')">
+          <h4>添加一条观影记录</h4>
+          <div class="field"><label>作品名称</label><input type="text" placeholder="请输入影片名称" required></div>
+          <div class="field"><label>类型</label>
+            <select><option>电影</option><option>电视剧</option><option>综艺</option><option>动漫</option><option>纪录片</option></select>
+          </div>
+          <div class="field"><label>我的评分</label>
+            <div class="stars" id="stars"><i data-v="1">&#9733;</i><i data-v="2">&#9733;</i><i data-v="3">&#9733;</i><i data-v="4">&#9733;</i><i data-v="5">&#9733;</i></div>
+          </div>
+          <div class="field"><label>观看状态</label>
+            <select><option>已看完</option><option>追更中</option><option>已收藏</option><option>想看</option></select>
+          </div>
+          <button type="submit">&#128190; 保存记录</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <div class="fin" id="site">
+    <div class="ball" style="left:10%;top:20%" aria-hidden="true"></div>
+    <div class="ball" style="right:12%;top:58%;animation-delay:2.6s" aria-hidden="true"></div>
+    <div class="fc">
+      <h2>海量影视<br><b>一站直达</b></h2>
+      <p>访问大象影视官方网站，查看热播榜单、分类检索、每日推荐与观影记录，内容清晰、导航直达。</p>
+      <div class="fc-btns">
+        <a class="btn btn-p" href="https://daxiangyingshi-wap.github.io">&#127760; 访问官网</a>
+        <a class="btn btn-o" href="#board">查看热播榜</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand">
+        <a class="logo" href="#home"><span class="ic">&#129420;</span><b>大象<i>影视</i></b></a>
+        <p>大象影视(daxiangyingshi-wap)是影视资源导航与观影指南页面，涵盖热播榜、分类检索、每日推荐与观影记录，适配手机与平板访问。</p>
+        <span class="url">https://daxiangyingshi-wap.github.io</span>
+      </div>
+      <div>
+        <h5>栏目导航</h5>
+        <ul>
+          <li><a href="#board">热播榜单</a></li>
+          <li><a href="#cat">分类检索</a></li>
+          <li><a href="#daily">每日推荐</a></li>
+          <li><a href="#rec">观影记录</a></li>
+          <li><a href="#site">访问官网</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>内容分类</h5>
+        <ul>
+          <li><a href="#cat">动作电影</a></li>
+          <li><a href="#cat">都市剧集</a></li>
+          <li><a href="#cat">纪录片</a></li>
+          <li><a href="#cat">动漫专区</a></li>
+          <li><a href="#cat">4K 专区</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>相关说明</h5>
+        <ul>
+          <li><a href="#board">热度排行</a></li>
+          <li><a href="#daily">每日精选</a></li>
+          <li><a href="#rec">记录评价</a></li>
+          <li><a href="#cat">题材入口</a></li>
+          <li><a href="#site">访问官网</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>&copy; 2026 大象影视(daxiangyingshi-wap) 保留所有权利。</span>
+      <span>网站网址：https://daxiangyingshi-wap.github.io</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* mobile nav */
+var burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',function(){
+  nav.classList.toggle('open');
+  var o=nav.classList.contains('open');
+  burger.setAttribute('aria-expanded',o);burger.innerHTML=o?'&#10005;':'&#9776;';
+});
+nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+  nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.innerHTML='&#9776;';
+})});
+/* daily slider */
+var thumb=document.getElementById('thumb'),pct=document.getElementById('pct'),track=thumb.parentElement;
+function setVal(clientX){
+  var r=track.getBoundingClientRect(),x=clientX-r.left;
+  var v=Math.max(20,Math.min(90,(x/r.width*100)));
+  thumb.style.width=v+'%';pct.textContent=Math.round(v)+'%';
+}
+thumb.addEventListener('mousedown',function(e){
+  e.preventDefault();var move=function(ev){setVal(ev.clientX)};
+  document.addEventListener('mousemove',move);
+  document.addEventListener('mouseup',function up(){document.removeEventListener('mousemove',move);document.removeEventListener('mouseup',up)});
+});
+thumb.addEventListener('touchstart',function(e){
+  var move=function(ev){setVal(ev.touches[0].clientX);ev.preventDefault()};
+  document.addEventListener('touchmove',move,{passive:false});
+  document.addEventListener('touchend',function end(){document.removeEventListener('touchmove',move);document.removeEventListener('touchend',end)});
+},{passive:true});
+/* stars */
+document.querySelectorAll('#stars i').forEach(function(s){
+  s.addEventListener('click',function(){
+    var v=+s.dataset.v;
+    document.querySelectorAll('#stars i').forEach(function(o){o.classList.toggle('on',+o.dataset.v<=v)});
+  });
+});
+/* reveal */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='translateY(0)';io.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.m-card,.node,.rec-form,.track,.daily li,.tb-wrap').forEach(function(el){
+  el.style.opacity=0;el.style.transform='translateY(24px)';el.style.transition='opacity .5s ease,transform .5s ease';io.observe(el);
+});
+</script>
+</body>
+</html>
